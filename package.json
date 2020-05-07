@@ -2,6 +2,8 @@
   "name": "svg-skateboard",
   "version": "1.0.0",
   "main": "index.js",
+  "repository": "git@github.com:kojiyamauchi/svg-skateboard.git",
+  "author": "kojiyamauchi <all.the.small.things@me.com>",
   "license": "MIT",
   "dependencies": {
     "core-js": "3",
@@ -206,7 +208,5 @@
     "check-pkg": "ncu",
     "update-pkg": "ncu '/^(?!(styled-components|@add-ignore-modules)).*$/' -u",
     "re-install": "rm yarn.lock && rm -rf node_modules && yarn install"
-  },
-  "repository": "git@github.com:kojiyamauchi/svg-skateboard.git",
-  "author": "kojiyamauchi <all.the.small.things@me.com>"
+  }
 }
