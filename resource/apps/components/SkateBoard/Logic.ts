@@ -15,14 +15,14 @@ const skateBoarders = [
   { id: 9, class: 'is-purple', glidingSelf: false },
   { id: 10, class: 'is-red', glidingSelf: false },
   { id: 11, class: 'is-white', glidingSelf: false },
-  { id: 12, class: 'is-yellow', glidingSelf: false },
+  { id: 12, class: 'is-yellow', glidingSelf: false }
 ]
 
 const values = {
   skateBoardWidth: 0,
   skateBoardHeight: 0,
   skateBoardDiagonalDiff: 0,
-  skateBoardShadow: -6,
+  skateBoardShadow: -6
 }
 
 const rotate: readonly number[] = [0, 45, 90, 135, 180, 225, 270, 315]
@@ -69,7 +69,7 @@ const generateHorizontal = (initializeRotate: {}): number => {
     leftEnd: -values.skateBoardWidth!,
     rightEnd: window.innerWidth,
     verticalRange: deviceWidth() ? 50 : 200,
-    diagonalRange: deviceWidth() ? 100 : 300,
+    diagonalRange: deviceWidth() ? 100 : 300
   }
   /* eslint-disable */
   return initializeRotate === rotate[0]
@@ -95,7 +95,7 @@ const generateVertical = (initializeRotate: {}, initializeHorizontal: {}): numbe
     topRightAngleDiff: -(values.skateBoardWidth! - (values.skateBoardWidth! - values.skateBoardHeight!) / 2),
     topDiagonalDiff: -(values.skateBoardWidth! - ((values.skateBoardWidth! - values.skateBoardHeight!) / 2 + values.skateBoardDiagonalDiff!)),
     bottomRightAngleDiff: window.innerHeight + (values.skateBoardWidth! - values.skateBoardHeight!) / 2,
-    bottomDiagonalDiff: window.innerHeight + ((values.skateBoardWidth! - values.skateBoardHeight!) / 2 - values.skateBoardDiagonalDiff!),
+    bottomDiagonalDiff: window.innerHeight + ((values.skateBoardWidth! - values.skateBoardHeight!) / 2 - values.skateBoardDiagonalDiff!)
   }
   /* eslint-disable */
   return initializeRotate === rotate[0] || initializeRotate === rotate[4] // 0deg or 180deg.
@@ -135,7 +135,7 @@ const generateTranslateX = (initializeRotate: {}): number => {
     x: window.innerWidth,
     objWidth: values.skateBoardWidth,
     objectShadow: values.skateBoardShadow,
-    none: 0,
+    none: 0
   }
   /* eslint-disable */
   return initializeRotate === rotate[0] // 0deg.
@@ -158,7 +158,7 @@ const generateTranslateY = (initializeRotate: {}): number => {
     y: window.innerHeight,
     objWidth: values.skateBoardWidth,
     objectShadow: values.skateBoardShadow,
-    none: 0,
+    none: 0
   }
   /* eslint-disable */
   return initializeRotate === rotate[0] || initializeRotate === rotate[4] // 0deg or 180deg.
@@ -202,7 +202,7 @@ const glideCore = async (index: number, selector: string, hooksFn: (value: React
         top: initializeVertical,
         visibility: 'visible',
         x: 0,
-        y: 0,
+        y: 0
       },
       {
         x: translateX,
@@ -213,7 +213,7 @@ const glideCore = async (index: number, selector: string, hooksFn: (value: React
           document.querySelector(selector)!.classList.remove('is-bomb')
           skateBoarders[index].glidingSelf = false
           hooksFn(false)
-        },
+        }
       }
     )
   })

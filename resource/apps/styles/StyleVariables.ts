@@ -9,7 +9,7 @@ export const BREAK_POINT_WIDTH: BreakPointWidthMember = {
   largeMobile: 768,
   tablet: 991,
   desktop: 1170,
-  largeDesktop: 1392,
+  largeDesktop: 1392
 }
 
 // Typo.

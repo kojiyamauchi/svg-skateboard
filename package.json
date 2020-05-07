@@ -169,8 +169,8 @@
   },
   "lint-staged": {
     "!(*.min).{js,ts,jsx,tsx}": [
+      "prettier --write --no-semi --single-quote --trailing-comma none --print-width 160 --jsx-bracket-same-line true",
       "eslint --fix",
-      "prettier --write --no-semi --single-quote --print-width 160 --jsx-bracket-same-line true",
       "git add"
     ]
   },
