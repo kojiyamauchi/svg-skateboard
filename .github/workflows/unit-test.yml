@@ -5,7 +5,7 @@ on:
       - master
       - develop
     paths:
-      - 'resource/tests/**/*.test.+(ts|tsx|js)'
+      - 'resource/tests/**.test.**'
 
 jobs:
   launch-jest:
