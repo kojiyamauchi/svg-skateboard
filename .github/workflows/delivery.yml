@@ -19,7 +19,6 @@ env:
   ENDPOINT_FTP:  # When Using FTP, Add Endpoint.
   ENDPOINT_REDIRECT: https://kojiyamauchi.github.io/svg-skateboard # When Create SPA, Match Either GitHub Pages, Netlify or FTP.
 
-
 jobs:
   delivery:
     name: Build & Deploy
