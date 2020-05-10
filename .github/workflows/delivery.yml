@@ -1,8 +1,9 @@
 name: Delivery
 on:
-  push:
-    branches:
-      - develop
+  pull_request:
+    types: closed
+    branches: develop
+
 env:
   # Boolean is No Use, Because It's Value is Out Put String.
   # When Using Env Var in Conditional Branch, Too Bad.
@@ -22,21 +23,22 @@ env:
 jobs:
   delivery:
     name: Build & Deploy
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - name: Set Env
-        run: |
-          echo "::set-env name=LAUNCH_BUILD::$(echo ${LAUNCH_BUILD})"
-          echo "::set-env name=LAUNCH_DEPLOY::$(echo ${LAUNCH_DEPLOY})"
-          echo "::set-env name=BUILD_TYPE::$(echo ${BUILD_TYPE})"
-          echo "::set-env name=DEPLOY_TYPE::$(echo ${DEPLOY_TYPE})"
-          echo "::set-env name=ENDPOINT_REDIRECT::$(echo ${ENDPOINT_REDIRECT})"
       - name: Checkout
         uses: actions/checkout@v2
       - name: Execution Environment for Node
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
+      - name: Set Env
+        run: |
+          echo "::set-env name=LAUNCH_BUILD::$(echo ${LAUNCH_BUILD})"
+          echo "::set-env name=BUILD_TYPE::$(echo ${BUILD_TYPE})"
+          echo "::set-env name=LAUNCH_DEPLOY::$(echo ${LAUNCH_DEPLOY})"
+          echo "::set-env name=DEPLOY_TYPE::$(echo ${DEPLOY_TYPE})"
+          echo "::set-env name=ENDPOINT_REDIRECT::$(echo ${ENDPOINT_REDIRECT})"
       - name: Get Yarn Cache Directory
         id: yarn-cache
         run: echo "::set-output name=dir::$(yarn cache dir)"
