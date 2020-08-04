@@ -20,7 +20,7 @@ Large Desktop. => ${styleMixins.breakPoint.largeDesktop` Add CSS Property `}
 */
 export const breakPoint = Object.keys(styleVariables.BREAK_POINT_WIDTH).reduce((accumulator, current): BreakPointMember => {
   const breakPointKey = current as keyof BreakPointWidthMember
-  accumulator[breakPointKey] = (...args: TemplateStringsArray): {} => css`
+  accumulator[breakPointKey] = (...args: TemplateStringsArray) => css`
     @media (min-width: ${styleVariables.BREAK_POINT_WIDTH[breakPointKey]}px) {
       ${css(args)};
     }

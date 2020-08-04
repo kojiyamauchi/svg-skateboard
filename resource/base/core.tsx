@@ -4,13 +4,13 @@
 
 import * as React from 'react'
 import ReactDOM from 'react-dom'
-import App from '@/App'
+import { App } from '@/App'
 import { GlobalStyle } from '@/styles/StyleGlobal'
 import { AppContainer } from 'react-hot-loader'
 import { BrowserRouter } from 'react-router-dom'
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const render = (_component: React.FunctionComponent<{}>): void => {
+const render = (_component: React.FunctionComponent): void => {
   ReactDOM.render(
     <AppContainer>
       <BrowserRouter>

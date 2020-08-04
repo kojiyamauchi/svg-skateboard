@@ -40,13 +40,13 @@ const resolvedPromise = <T>(arg: T): Promise<T> => {
   return new Promise((resolve): void => resolve(arg))
 }
 
-// @ts-ignore TS6133
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+/*
 const sleep = (ms: number): Promise<number> => {
   return new Promise((resolve): number => {
     return setTimeout(resolve, ms)
   })
 }
+*/
 
 const generateRotate = (): number => {
   return rotate[Math.floor(Math.random() * rotate.length)]
@@ -64,7 +64,7 @@ const generateEasing = (): string => {
   return easing[Math.floor(Math.random() * easing.length)]
 }
 
-const generateHorizontal = (initializeRotate: {}): number => {
+const generateHorizontal = (initializeRotate: number): number => {
   const origin = {
     leftEnd: -values.skateBoardWidth!,
     rightEnd: window.innerWidth,
@@ -86,7 +86,7 @@ const generateHorizontal = (initializeRotate: {}): number => {
   /* eslint-enable */
 }
 
-const generateVertical = (initializeRotate: {}, initializeHorizontal: {}): number => {
+const generateVertical = (initializeRotate: number, initializeHorizontal: number): number => {
   const origin = {
     leftEnd: -values.skateBoardWidth!,
     rightEnd: window.innerWidth,
@@ -124,13 +124,13 @@ const generateVertical = (initializeRotate: {}, initializeHorizontal: {}): numbe
   /* eslint-enable */
 }
 
-const generateDurationValue = (initializeRotate: {}, lower: number, upper: number, lower2: number, upper2: number): number => {
+const generateDurationValue = (initializeRotate: number, lower: number, upper: number, lower2: number, upper2: number): number => {
   return initializeRotate === rotate[0] || initializeRotate === rotate[2] || initializeRotate === rotate[4] || initializeRotate === rotate[6]
     ? Math.random() * (upper - lower) + lower
     : Math.random() * (upper2 - lower2) + lower2
 }
 
-const generateTranslateX = (initializeRotate: {}): number => {
+const generateTranslateX = (initializeRotate: number): number => {
   const transition = {
     x: window.innerWidth,
     objWidth: values.skateBoardWidth,
@@ -152,7 +152,7 @@ const generateTranslateX = (initializeRotate: {}): number => {
   /* eslint-enable */
 }
 
-const generateTranslateY = (initializeRotate: {}): number => {
+const generateTranslateY = (initializeRotate: number): number => {
   const transition = {
     x: window.innerWidth,
     y: window.innerHeight,

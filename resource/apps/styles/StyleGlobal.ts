@@ -126,26 +126,18 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   @media screen and (-webkit-min-device-pixel-ratio: 0) {
-
-    * {
-    }
+    * {}
   }
 
   @media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: .001dpcm) {
-
-    * {
-    }
+    * {}
   }
 
   @-moz-document url-prefix() {
-
-    * {
-    }
+    * {}
   }
 
   @media all and (-ms-high-contrast: none) {
-
-    * {
-    }
+    * {}
   }
 `
