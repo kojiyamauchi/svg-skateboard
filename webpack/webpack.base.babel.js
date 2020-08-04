@@ -16,7 +16,7 @@ module.exports = {
   // Output Point.
   output: {
     path: path.resolve(__dirname, '../delivery/'),
-    filename: path.join('js', 'core.min.js'),
+    filename: path.join('js', 'core.min.js')
     // publicPath: '/' // Setting Root of Top Dir. Unnecessary Maybe...
   },
   module: {
@@ -26,13 +26,13 @@ module.exports = {
         enforce: 'pre',
         test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
-        loader: 'eslint-loader',
+        loader: 'eslint-loader'
       },
       // ECMA & React.
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: [{ loader: 'cache-loader' }, { loader: 'thread-loader' }, { loader: 'babel-loader?cacheDirectory' }],
+        use: [{ loader: 'cache-loader' }, { loader: 'thread-loader' }, { loader: 'babel-loader?cacheDirectory' }]
       },
       // TS & TSX.
       {
@@ -42,14 +42,15 @@ module.exports = {
           { loader: 'cache-loader' },
           { loader: 'thread-loader' },
           { loader: 'babel-loader?cacheDirectory' },
-          { loader: 'ts-loader', options: { happyPackMode: true } },
-        ],
+          { loader: 'ts-loader', options: { happyPackMode: true } }
+        ]
       },
       // Styled Components.
       {
-        test: /\.(js|ts)$/,
+        enforce: 'pre',
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
-        use: [{ loader: 'cache-loader' }, { loader: 'thread-loader' }, { loader: 'stylelint-custom-processor-loader', options: { emitWarning: true } }],
+        use: [{ loader: 'cache-loader' }, { loader: 'thread-loader' }, { loader: 'stylelint-custom-processor-loader', options: { emitWarning: true } }]
       },
       // For Images.
       {
@@ -57,8 +58,8 @@ module.exports = {
         loaders: 'url-loader',
         options: {
           limit: 10000,
-          outputPath: 'materials/images',
-        },
+          outputPath: 'materials/images'
+        }
       },
       // For JSX SVG.
       {
@@ -72,19 +73,19 @@ module.exports = {
                 plugins: [
                   {
                     removeTitle: true,
-                    removeDesc: true,
-                  },
+                    removeDesc: true
+                  }
                 ],
-                floatPrecision: 2,
-              },
-            },
-          },
-        ],
+                floatPrecision: 2
+              }
+            }
+          }
+        ]
       },
       // For Inline SVG.
       {
         test: /\.inline.svg$/,
-        loader: 'svg-inline-loader',
+        loader: 'svg-inline-loader'
       },
       // For Icon.
       {
@@ -92,8 +93,8 @@ module.exports = {
         loaders: 'url-loader',
         options: {
           limit: 10000,
-          outputPath: 'materials/icons', // Setting Icons File Output Dir.
-        },
+          outputPath: 'materials/icons' // Setting Icons File Output Dir.
+        }
       },
       // For Fonts.
       {
@@ -101,8 +102,8 @@ module.exports = {
         loaders: 'url-loader',
         options: {
           limit: 10000,
-          outputPath: 'materials/fonts', // Setting Fonts File Output Dir.
-        },
+          outputPath: 'materials/fonts' // Setting Fonts File Output Dir.
+        }
       },
       // For PDF.
       {
@@ -110,23 +111,23 @@ module.exports = {
         loaders: 'url-loader',
         options: {
           limit: 10000,
-          outputPath: 'materials/pdf', // Setting PDF File Output Dir.
-        },
+          outputPath: 'materials/pdf' // Setting PDF File Output Dir.
+        }
       },
       // For JSON (Into Bundle File).
       {
         type: 'javascript/auto',
         test: /\.json$/,
         exclude: /node_modules/,
-        loader: 'json-loader',
+        loader: 'json-loader'
       },
       // Source Map.
       {
         test: /\.js$/,
         enforce: 'pre',
-        loader: 'source-map-loader',
-      },
-    ],
+        loader: 'source-map-loader'
+      }
+    ]
   },
 
   resolve: {
@@ -134,14 +135,14 @@ module.exports = {
 
     alias: {
       '@': path.resolve(__dirname, '../resource/apps/'),
-      'react-dom': '@hot-loader/react-dom',
-    },
+      'react-dom': '@hot-loader/react-dom'
+    }
   },
 
   plugins: [
     // using 'happyPackMode' on ts-loader option. (transpileOnly is true)
     // for that, use this plugin.(for type check)
-    new ForkTsChecker({ checkSyntacticErrors: true }),
+    new ForkTsChecker(),
     // For Faster Build.
     new HardSourceWebpackPlugin(),
     // Notify Desktop When a Compile Error.
@@ -154,21 +155,21 @@ module.exports = {
         { charset: 'UTF-8' },
         { 'http-equiv': 'content-language', content: 'ja' },
         { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge' },
-        { viewport: 'width=device-width, initial-scale=1' },
+        { viewport: 'width=device-width, initial-scale=1' }
       ],
-      templateContent: ({ htmlWebpackPlugin }) => `<html lang="ja"><title>${htmlWebpackPlugin.options.title}</title><body><div id="app"></div></body></html>`,
-    }),
+      templateContent: ({ htmlWebpackPlugin }) => `<html lang="ja"><title>${htmlWebpackPlugin.options.title}</title><body><div id="app"></div></body></html>`
+    })
   ],
   // Setting for Warning on Terminal.
   performance: {
     /* An entrypoint represents all assets that would be utilized during initial load time for a specific entry.
     This option controls when webpack should emit performance hints based on the maximum entrypoint size.
     The default value is 250000 (bytes). */
-    maxEntrypointSize: 400000,
+    maxEntrypointSize: 500000,
 
     /* An asset is any emitted file from webpack.
     This option controls when webpack emits a performance hint based on individual asset size.
     The default value is 250000 (bytes). */
-    maxAssetSize: 400000,
-  },
+    maxAssetSize: 500000
+  }
 }
