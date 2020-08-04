@@ -8,10 +8,10 @@ type BreakPointWidthMember = {
 }
 
 type BreakPointMember = {
-  smallMobile: Function
-  mobile: Function
-  largeMobile: Function
-  tablet: Function
-  desktop: Function
-  largeDesktop: Function
+  smallMobile: (arg: TemplateStringsArray) => import('styled-components').FlattenSimpleInterpolation
+  mobile: (arg: TemplateStringsArray) => import('styled-components').FlattenSimpleInterpolation
+  largeMobile: (arg: TemplateStringsArray) => import('styled-components').FlattenSimpleInterpolation
+  tablet: (arg: TemplateStringsArray) => import('styled-components').FlattenSimpleInterpolation
+  desktop: (arg: TemplateStringsArray) => import('styled-components').FlattenSimpleInterpolation
+  largeDesktop: (arg: TemplateStringsArray) => import('styled-components').FlattenSimpleInterpolation
 }

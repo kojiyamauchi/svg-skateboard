@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /*
   SkateBoard / View
 */
@@ -21,132 +22,15 @@ import skateboardWhite from '@/materials/images/skateboard_white.svg'
 import skateboardYellow from '@/materials/images/skateboard_yellow.svg'
 import { skateBoarders, resolvedPromise, glideCore } from '@/components/SkateBoard/Logic'
 
-const Wrapper = styled.div`
-  width: 100vw;
-  height: 100vh;
-  &.is-over {
-    filter: blur(5px);
-    transition: filter 0.5s ease-out;
-  }
-  .skateboard {
-    width: 100px;
-    height: 52px;
-    position: absolute;
-    ${styleMixins.breakPoint.largeMobile` width: 150px; `}
-    ${styleMixins.breakPoint.largeMobile` height: 78px; `}
-    &:hover {
-      cursor: url(${fire}) 25 25, auto;
-    }
-    &:before {
-      content: ' ';
-      display: block;
-      width: 100px;
-      height: 52px;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 1;
-      ${styleMixins.breakPoint.largeMobile` width: 150px; `}
-      ${styleMixins.breakPoint.largeMobile` height: 78px; `}
-    }
-    &:after {
-      content: ' ';
-      display: block;
-      width: 100px;
-      height: 52px;
-      background-image: url(${skateboardBG});
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-      position: absolute;
-      top: 3px;
-      right: 9px;
-      z-index: 0;
-      filter: blur(1px);
-      ${styleMixins.breakPoint.largeMobile` width: 150px; `}
-      ${styleMixins.breakPoint.largeMobile` height: 78px; `}
-    }
-    &.is-black {
-      &:before {
-        background-image: url(${skateboardBlack});
-      }
-    }
-    &.is-blue {
-      &:before {
-        background-image: url(${skateboardBlue});
-      }
-    }
-    &.is-gray {
-      &:before {
-        background-image: url(${skateboardGray});
-      }
-    }
-    &.is-green {
-      &:before {
-        background-image: url(${skateboardGreen});
-      }
-    }
-    &.is-light-blue {
-      &:before {
-        background-image: url(${skateboardLightBlue});
-      }
-    }
-    &.is-light-green {
-      &:before {
-        background-image: url(${skateboardLightGreen});
-      }
-    }
-    &.is-orange {
-      &:before {
-        background-image: url(${skateboardOrange});
-      }
-    }
-    &.is-pink {
-      &:before {
-        background-image: url(${skateboardPink});
-      }
-    }
-    &.is-purple {
-      &:before {
-        background-image: url(${skateboardPurple});
-      }
-    }
-    &.is-red {
-      &:before {
-        background-image: url(${skateboardRed});
-      }
-    }
-    &.is-white {
-      &:before {
-        background-image: url(${skateboardWhite});
-      }
-    }
-    &.is-yellow {
-      &:before {
-        background-image: url(${skateboardYellow});
-      }
-    }
-    &.is-bomb {
-      &:before,
-      &:after {
-        transform: scale(0);
-        transition: transform 0.65s ease-in;
-      }
-    }
-  }
-`
-
 type Props = {
   fn: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
   stateOver: boolean
+  className?: string
 }
 
 const { useState, useEffect } = React
 
-const SkateBoard: React.FC<Props> = (props): JSX.Element => {
+const SkateBoardComponent: React.FC<Props> = (props): JSX.Element => {
   const [glidingState, setGlidingState] = useState<boolean>(false)
 
   useEffect((): void => {
@@ -169,7 +53,143 @@ const SkateBoard: React.FC<Props> = (props): JSX.Element => {
     )
   }
 
-  return <Wrapper className={props.stateOver ? 'is-over' : ''}>{setSkateBoard()}</Wrapper>
+  return <div className={`${props.className} ${props.stateOver ? 'is-over' : ''}`}>{setSkateBoard()}</div>
 }
 
-export default SkateBoard
+const StyledComponent = styled(SkateBoardComponent)`
+  width: 100vw;
+  height: 100vh;
+
+  &.is-over {
+    filter: blur(5px);
+    transition: filter .5s ease-out;
+  }
+
+  .skateboard {
+    width: 100px;
+    height: 52px;
+    position: absolute;
+    ${styleMixins.breakPoint.largeMobile` width: 150px; `}
+    ${styleMixins.breakPoint.largeMobile` height: 78px; `}
+
+    &:hover {
+      cursor: url(${fire}) 25 25, auto;
+    }
+
+    &:before {
+      content: ' ';
+      display: block;
+      width: 100px;
+      height: 52px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      ${styleMixins.breakPoint.largeMobile` width: 150px; `}
+      ${styleMixins.breakPoint.largeMobile` height: 78px; `}
+    }
+
+    &:after {
+      content: ' ';
+      display: block;
+      width: 100px;
+      height: 52px;
+      background-image: url(${skateboardBG});
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      position: absolute;
+      top: 3px;
+      right: 9px;
+      z-index: 0;
+      filter: blur(1px);
+      ${styleMixins.breakPoint.largeMobile` width: 150px; `}
+      ${styleMixins.breakPoint.largeMobile` height: 78px; `}
+    }
+
+    &.is-black {
+      &:before {
+        background-image: url(${skateboardBlack});
+      }
+    }
+
+    &.is-blue {
+      &:before {
+        background-image: url(${skateboardBlue});
+      }
+    }
+
+    &.is-gray {
+      &:before {
+        background-image: url(${skateboardGray});
+      }
+    }
+
+    &.is-green {
+      &:before {
+        background-image: url(${skateboardGreen});
+      }
+    }
+
+    &.is-light-blue {
+      &:before {
+        background-image: url(${skateboardLightBlue});
+      }
+    }
+
+    &.is-light-green {
+      &:before {
+        background-image: url(${skateboardLightGreen});
+      }
+    }
+
+    &.is-orange {
+      &:before {
+        background-image: url(${skateboardOrange});
+      }
+    }
+
+    &.is-pink {
+      &:before {
+        background-image: url(${skateboardPink});
+      }
+    }
+
+    &.is-purple {
+      &:before {
+        background-image: url(${skateboardPurple});
+      }
+    }
+
+    &.is-red {
+      &:before {
+        background-image: url(${skateboardRed});
+      }
+    }
+
+    &.is-white {
+      &:before {
+        background-image: url(${skateboardWhite});
+      }
+    }
+
+    &.is-yellow {
+      &:before {
+        background-image: url(${skateboardYellow});
+      }
+    }
+
+    &.is-bomb {
+      &:before,
+      &:after {
+        transform: scale(0);
+        transition: transform 0.65s ease-in;
+      }
+    }
+  }
+`
+
+export const SkateBoard = StyledComponent
