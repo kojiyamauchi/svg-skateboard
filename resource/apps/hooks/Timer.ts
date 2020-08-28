@@ -1,7 +1,7 @@
-import * as React from 'react'
+import React from 'react'
 const { useState } = React
 
-const useTimer = (): {
+export const useTimer = (): {
   second: number
   over: boolean
 } => {
@@ -16,5 +16,3 @@ const useTimer = (): {
   }
   return { second, over }
 }
-
-export default useTimer

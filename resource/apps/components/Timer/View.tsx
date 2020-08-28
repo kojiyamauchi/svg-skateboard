@@ -2,21 +2,21 @@
   Timer / View
 */
 
-import * as React from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import * as styleMixins from '@/styles/StyleMixins'
+import { breakPoint } from '@/styles/StyleMixins'
 
 type Props = {
-  stateSecond: number
-  stateOver: boolean
   className?: string
+  stateOver: boolean
+  stateSecond: number
 }
 
-const TimerComponent: React.FC<Props> = (props): JSX.Element => (
-  <div className={`${props.className} ${props.stateOver ? 'is-over' : ''}`}>
+const TimerComponent: React.FC<Props> = ({ className, stateOver, stateSecond }): JSX.Element => (
+  <div className={`${className} ${stateOver ? 'is-over' : ''}`}>
     <p className="letter">
       <span className="heading">TIME</span>
-      00:{props.stateSecond.toString().padStart(2, '0')}
+      00:{stateSecond.toString().padStart(2, '0')}
     </p>
   </div>
 )
@@ -41,7 +41,7 @@ const StyledComponent = styled(TimerComponent)`
     font-size: 2.4rem;
     display: inline-block;
     width: 100%;
-    ${styleMixins.breakPoint.largeMobile` font-size: 3rem; `}
+    ${breakPoint.largeMobile` font-size: 3rem; `}
   }
 `
 

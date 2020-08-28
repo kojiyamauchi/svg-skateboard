@@ -2,27 +2,28 @@
   Wall / View
 */
 
-import * as React from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import * as styleMixins from '@/styles/StyleMixins'
+import { breakPoint } from '@/styles/StyleMixins'
 import gitHub from '@/materials/images/github.svg'
 
 type Props = {
-  stateCount: number
-  stateOver: boolean
   className?: string
+  stateOver: boolean
+  stateCount: number
 }
 
-const WallComponent: React.FC<Props> = (props): JSX.Element => {
+const WallComponent: React.FC<Props> = ({ className, stateOver, stateCount }): JSX.Element => {
   const reset = (): void => location.reload()
-  // const addBlock = (): JSX.Element[] => Array.from(new Array(10), (_info, index): JSX.Element => <div className="block" key={index}></div>)
+  // const addBlock = (): JSX.Element[] => Array.from({ length: 10 }, (_info, index): JSX.Element => <div className="block" key={index}></div>)
+
   return (
-    <div className={`${props.className} ${props.stateOver ? 'is-active' : ''}`}>
+    <div className={`${className} ${stateOver ? 'is-active' : ''}`}>
       <div className="inner">
         <p className="letter">FINISH!!!</p>
         <p className="score">
           SCORE&apos;S&nbsp;
-          <span className="number">{props.stateCount}</span>
+          <span className="number">{stateCount}</span>
         </p>
         <button className="button-replay" onClick={reset}>
           REPLAY
@@ -60,7 +61,7 @@ const StyledComponent = styled(WallComponent)`
     font-family: arial, sans-serif;
     font-size: 4em;
     display: inline-block;
-    ${styleMixins.breakPoint.largeMobile` font-size: 6em; `}
+    ${breakPoint.largeMobile` font-size: 6em; `}
   }
 
   .score {
@@ -68,13 +69,13 @@ const StyledComponent = styled(WallComponent)`
     font-size: 4em;
     display: inline-block;
     margin: -2px 0 20px 0;
-    ${styleMixins.breakPoint.largeMobile` font-size: 5em; `}
+    ${breakPoint.largeMobile` font-size: 5em; `}
   }
 
   .number {
     font-size: 7.5rem;
     display: inline-block;
-    ${styleMixins.breakPoint.largeMobile` font-size: 10rem; `}
+    ${breakPoint.largeMobile` font-size: 10rem; `}
     opacity: 0;
     transform: translateY(-20px);
   }
@@ -89,9 +90,9 @@ const StyledComponent = styled(WallComponent)`
     padding: 2px 46px;
     margin: 0 0 20px 0;
     cursor: pointer;
-    ${styleMixins.breakPoint.largeMobile` font-size: 3em; `}
-    ${styleMixins.breakPoint.largeMobile` padding: 4px 54px; `}
-    ${styleMixins.breakPoint.largeMobile` margin: 0 0 30px 0; `}
+    ${breakPoint.largeMobile` font-size: 3em; `}
+    ${breakPoint.largeMobile` padding: 4px 54px; `}
+    ${breakPoint.largeMobile` margin: 0 0 30px 0; `}
   }
 
   .back {
@@ -101,8 +102,8 @@ const StyledComponent = styled(WallComponent)`
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    ${styleMixins.breakPoint.largeMobile` width: 44px `}
-    ${styleMixins.breakPoint.largeMobile` height: 44px; `}
+    ${breakPoint.largeMobile` width: 44px `}
+    ${breakPoint.largeMobile` height: 44px; `}
   }
 
   .block {

@@ -6,7 +6,7 @@
 import { css } from 'styled-components'
 
 // Import Style Variables.
-import * as styleVariables from '@/styles/StyleVariables'
+import { BREAK_POINT_WIDTH } from '@/styles/StyleVariables'
 
 // Break Point.
 /*
@@ -18,10 +18,10 @@ Tablet.        => ${styleMixins.breakPoint.tablet` Add CSS Property `}
 Desktop.       => ${styleMixins.breakPoint.desktop` Add CSS Property `}
 Large Desktop. => ${styleMixins.breakPoint.largeDesktop` Add CSS Property `}
 */
-export const breakPoint = Object.keys(styleVariables.BREAK_POINT_WIDTH).reduce((accumulator, current): BreakPointMember => {
+export const breakPoint = Object.keys(BREAK_POINT_WIDTH).reduce((accumulator, current): BreakPointMember => {
   const breakPointKey = current as keyof BreakPointWidthMember
   accumulator[breakPointKey] = (args: TemplateStringsArray) => css`
-    @media (min-width: ${styleVariables.BREAK_POINT_WIDTH[breakPointKey]}px) {
+    @media (min-width: ${BREAK_POINT_WIDTH[breakPointKey]}px) {
       ${css(args)};
     }
   `
