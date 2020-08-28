@@ -2,21 +2,21 @@
   Counter / View
 */
 
-import * as React from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import * as styleMixins from '@/styles/StyleMixins'
+import { breakPoint } from '@/styles/StyleMixins'
 import LogoSneaker from '@/materials/images/logoSneaker.png'
 
 type Props = {
-  stateCount: number
-  stateOver: boolean
   className?: string
+  stateOver: boolean
+  stateCount: number
 }
 
-const CounterComponent: React.FC<Props> = (props): JSX.Element => (
-  <div className={`${props.className} ${props.stateOver ? 'is-over' : ''}`}>
+const CounterComponent: React.FC<Props> = ({ className, stateOver, stateCount }): JSX.Element => (
+  <div className={`${className} ${stateOver ? 'is-over' : ''}`}>
     <p className="letter">
-      <span className="count">{props.stateCount}</span>
+      <span className="count">{stateCount}</span>
       <span className="display-mobile">&nbsp;Bomb!!</span>
       <span className="display-desktop">&nbsp;Skateboard!!💣</span>
     </p>
@@ -37,29 +37,29 @@ const StyledComponent = styled(CounterComponent)`
 
   .img-logo {
     width: 90px;
-    ${styleMixins.breakPoint.largeMobile` width: 150px; `}
+    ${breakPoint.largeMobile` width: 150px; `}
   }
 
   .letter {
     font-size: 2.4em;
     padding: 0 0 0 5px;
-    ${styleMixins.breakPoint.largeMobile` font-size: 3em; `}
-    ${styleMixins.breakPoint.largeMobile` padding: 0 0 0 8px; `}
+    ${breakPoint.largeMobile` font-size: 3em; `}
+    ${breakPoint.largeMobile` padding: 0 0 0 8px; `}
   }
 
   .count {
     font-size: 4rem;
-    ${styleMixins.breakPoint.largeMobile` font-size: 5rem; `}
+    ${breakPoint.largeMobile` font-size: 5rem; `}
   }
 
   .display-mobile {
     display: inline;
-    ${styleMixins.breakPoint.largeMobile` display: none; `}
+    ${breakPoint.largeMobile` display: none; `}
   }
 
   .display-desktop {
     display: none;
-    ${styleMixins.breakPoint.largeMobile` display: inline; `}
+    ${breakPoint.largeMobile` display: inline; `}
   }
 `
 

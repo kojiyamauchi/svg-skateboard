@@ -5,7 +5,7 @@
 // Import Styled Components.
 import { createGlobalStyle } from 'styled-components'
 // Import Style Variables.
-import * as styleVariables from '@/styles/StyleVariables'
+import { GLOBAL_FONT, GLOBAL_COLOR } from '@/styles/StyleVariables'
 import bomb from '@/materials/images/bomb.png'
 
 // eslint-disable-next-line import/prefer-default-export
@@ -15,8 +15,8 @@ export const GlobalStyle = createGlobalStyle`
   @import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
 
   html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
-    font-family: ${styleVariables.GLOBAL_FONT};
-    color: ${styleVariables.GLOBAL_COLOR};
+    font-family: ${GLOBAL_FONT};
+    color: ${GLOBAL_COLOR};
     font-size: 100%;
     font-weight: normal;
     font-style: normal;

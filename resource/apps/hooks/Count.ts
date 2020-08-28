@@ -1,7 +1,7 @@
-import * as React from 'react'
+import React from 'react'
 const { useState } = React
 
-const useCountSkateboard = (): {
+export const useCountSkateboard = (): {
   count: number
   onBomb: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 } => {
@@ -13,5 +13,3 @@ const useCountSkateboard = (): {
 
   return { count, onBomb }
 }
-
-export default useCountSkateboard

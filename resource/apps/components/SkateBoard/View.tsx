@@ -3,9 +3,9 @@
   SkateBoard / View
 */
 
-import * as React from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import * as styleMixins from '@/styles/StyleMixins'
+import { breakPoint } from '@/styles/StyleMixins'
 import fire from '@/materials/images/fire.png'
 import skateboardBG from '@/materials/images/skateboard_bg.svg'
 import skateboardBlack from '@/materials/images/skateboard_black.svg'
@@ -24,13 +24,13 @@ import { skateBoarders, resolvedPromise, glideCore } from '@/components/SkateBoa
 
 type Props = {
   fn: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
-  stateOver: boolean
   className?: string
+  stateOver: boolean
 }
 
 const { useState, useEffect } = React
 
-const SkateBoardComponent: React.FC<Props> = (props): JSX.Element => {
+const SkateBoardComponent: React.FC<Props> = ({ fn, className, stateOver }): JSX.Element => {
   const [glidingState, setGlidingState] = useState<boolean>(false)
 
   useEffect((): void => {
@@ -48,12 +48,12 @@ const SkateBoardComponent: React.FC<Props> = (props): JSX.Element => {
   const setSkateBoard = (): JSX.Element[] => {
     return skateBoarders.map(
       (info): JSX.Element => {
-        return <div className={`skateboard ${info.class}`} key={info.id} onClick={props.fn}></div>
+        return <div className={`skateboard ${info.class}`} key={info.id} onClick={fn}></div>
       }
     )
   }
 
-  return <div className={`${props.className} ${props.stateOver ? 'is-over' : ''}`}>{setSkateBoard()}</div>
+  return <div className={`${className} ${stateOver ? 'is-over' : ''}`}>{setSkateBoard()}</div>
 }
 
 const StyledComponent = styled(SkateBoardComponent)`
@@ -69,8 +69,8 @@ const StyledComponent = styled(SkateBoardComponent)`
     width: 100px;
     height: 52px;
     position: absolute;
-    ${styleMixins.breakPoint.largeMobile` width: 150px; `}
-    ${styleMixins.breakPoint.largeMobile` height: 78px; `}
+    ${breakPoint.largeMobile` width: 150px; `}
+    ${breakPoint.largeMobile` height: 78px; `}
 
     &:hover {
       cursor: url(${fire}) 25 25, auto;
@@ -88,8 +88,8 @@ const StyledComponent = styled(SkateBoardComponent)`
       top: 0;
       left: 0;
       z-index: 1;
-      ${styleMixins.breakPoint.largeMobile` width: 150px; `}
-      ${styleMixins.breakPoint.largeMobile` height: 78px; `}
+      ${breakPoint.largeMobile` width: 150px; `}
+      ${breakPoint.largeMobile` height: 78px; `}
     }
 
     &:after {
@@ -106,8 +106,8 @@ const StyledComponent = styled(SkateBoardComponent)`
       right: 9px;
       z-index: 0;
       filter: blur(1px);
-      ${styleMixins.breakPoint.largeMobile` width: 150px; `}
-      ${styleMixins.breakPoint.largeMobile` height: 78px; `}
+      ${breakPoint.largeMobile` width: 150px; `}
+      ${breakPoint.largeMobile` height: 78px; `}
     }
 
     &.is-black {
